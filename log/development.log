@@ -12314,3 +12314,942 @@ Processing by ItemsController#index as HTML
 Completed 200 OK in 306ms (Views: 216.2ms | ActiveRecord: 9.1ms)
 
 
+Started GET "/items" for 192.168.10.1 at 2017-09-04 10:49:37 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.9ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 287ms (Views: 249.9ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 10:52:30 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#new as HTML
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 387ms (Views: 267.2ms | ActiveRecord: 6.6ms)
+
+
+Started POST "/logs" for 192.168.10.1 at 2017-09-04 10:52:43 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#create as HTML
+  Parameters: {"log"=>{"item_id"=>"2", "borrower_id"=>"597f26b1a7ab7d0001cdf58b"}, "authenticity_token"=>"x2pfcju3dZoQMZZPchRQHtkJy3fdI9mUYAI+pqHosupqwtuNEsU6DTrVunOlosPFU8pO8cmyLKP7F2akza7qYQ=="}
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "logs" ("lender_id", "borrower_id", "created_at", "updated_at", "item_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["lender_id", "599aab6ea7ab7d0001cdf5d5"], ["borrower_id", "597f26b1a7ab7d0001cdf58b"], ["created_at", 2017-09-04 10:52:43 UTC], ["updated_at", 2017-09-04 10:52:43 UTC], ["item_id", 2]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/logs/1
+Completed 302 Found in 41ms (ActiveRecord: 5.7ms)
+
+
+Started GET "/logs/1" for 192.168.10.1 at 2017-09-04 10:52:43 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  Rendered logs/show.html.erb within layouts/application (17.7ms)
+Completed 500 Internal Server Error in 96ms (ActiveRecord: 1.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    17:         <tbody>
+    18:           <tr>
+    19:            <td><%= @log.id %></td>
+    20:            <td><%= @log.lender.name %></td>
+    21:            <td><%= @log.borrower.name %></td>
+    22:            <td><%= @log.item.description %></td>
+    23:            <td><%= @log.created_at %></td>
+  
+app/views/logs/show.html.erb:20:in `_app_views_logs_show_html_erb___3742132777088642990_70284858343940'
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.4ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (31.0ms)
+Started GET "/logs" for 192.168.10.1 at 2017-09-04 10:56:26 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#index as HTML
+  [1m[36mLog Load (1.1ms)[0m  [1m[34mSELECT "logs".* FROM "logs"[0m
+  Rendering logs/index.html.erb within layouts/application
+  [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered logs/index.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 502ms (Views: 276.2ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 10:56:46 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#new as HTML
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.1ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 319ms (Views: 201.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 10:56:55 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#new as HTML
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.2ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 315ms (Views: 194.7ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/items" for 192.168.10.1 at 2017-09-04 10:56:56 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (2.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (21.5ms)
+Completed 500 Internal Server Error in 111ms (ActiveRecord: 4.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `logs' for nil:NilClass):
+    35:               <% else %>
+    36:                 <th class="available">Available</th>
+    37:               <% end %>
+    38:                 <th><%=item.current.logs.return_date%></th>
+    39:                 <th><%= link_to 'delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></th>
+    40:             </tr>
+    41:              <%end%>
+  
+app/views/items/index.html.erb:38:in `block in _app_views_items_index_html_erb___1788818476703293643_70284894787720'
+app/views/items/index.html.erb:28:in `_app_views_items_index_html_erb___1788818476703293643_70284894787720'
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.4ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.9ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (31.5ms)
+Started GET "/items" for 192.168.10.1 at 2017-09-04 10:57:11 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.5ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (1.4ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.4ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 283ms (Views: 246.6ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/logs/1/checkin" for 192.168.10.1 at 2017-09-04 10:57:14 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#checkin as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "logs" SET "returned_to_id" = $1, "return_date" = $2, "updated_at" = $3 WHERE "logs"."id" = $4[0m  [["returned_to_id", "599aab6ea7ab7d0001cdf5d5"], ["return_date", Mon, 04 Sep 2017], ["updated_at", 2017-09-04 10:57:14 UTC], ["id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/logs
+Completed 302 Found in 18ms (ActiveRecord: 5.2ms)
+
+
+Started GET "/logs" for 192.168.10.1 at 2017-09-04 10:57:14 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#index as HTML
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT "logs".* FROM "logs"[0m
+  Rendering logs/index.html.erb within layouts/application
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered logs/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 414ms (Views: 207.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 10:57:24 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#new as HTML
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mLog Load (1.2ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 426ms (Views: 307.6ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/logs" for 192.168.10.1 at 2017-09-04 10:57:28 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#create as HTML
+  Parameters: {"log"=>{"item_id"=>"1", "borrower_id"=>"597ee39fa7ab7d0001cdf586"}, "authenticity_token"=>"maNMXuMLI8BsgpXypbw4e4bmFJ6Qnrm3hGwEcBrBRIQ0C8ihynlsV0Zmuc5yCqugDCWRGIQPTIAfeVxydoccDw=="}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "logs" ("lender_id", "borrower_id", "created_at", "updated_at", "item_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["lender_id", "599aab6ea7ab7d0001cdf5d5"], ["borrower_id", "597ee39fa7ab7d0001cdf586"], ["created_at", 2017-09-04 10:57:28 UTC], ["updated_at", 2017-09-04 10:57:28 UTC], ["item_id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/logs/2
+Completed 302 Found in 24ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/logs/2" for 192.168.10.1 at 2017-09-04 10:57:28 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mLog Load (1.4ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  Rendered logs/show.html.erb within layouts/application (27.4ms)
+Completed 500 Internal Server Error in 123ms (ActiveRecord: 1.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    17:         <tbody>
+    18:           <tr>
+    19:            <td><%= @log.id %></td>
+    20:            <td><%= @log.lender.name %></td>
+    21:            <td><%= @log.borrower.name %></td>
+    22:            <td><%= @log.item.description %></td>
+    23:            <td><%= @log.created_at %></td>
+  
+app/views/logs/show.html.erb:20:in `_app_views_logs_show_html_erb___3742132777088642990_70284896039040'
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.1ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (33.9ms)
+Started GET "/items" for 192.168.10.1 at 2017-09-04 10:57:34 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (1.4ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 217ms (Views: 188.1ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/items" for 192.168.10.1 at 2017-09-04 11:01:03 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.2ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 357ms (Views: 321.9ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 11:01:04 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#new as HTML
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 326ms (Views: 222.6ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/logs" for 192.168.10.1 at 2017-09-04 11:01:07 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#create as HTML
+  Parameters: {"log"=>{"item_id"=>"2", "borrower_id"=>"597ee307a7ab7d0001cdf581"}, "authenticity_token"=>"rVl8s4wCfro7WnQZ8vlqAuFZYymjlk2AAdNZMO9U2TIA8fhMpXAxLRG+WCUlT/nZa5rmr7cHuLeaxgEygxKBuQ=="}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "logs" ("lender_id", "borrower_id", "created_at", "updated_at", "item_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["lender_id", "599aab6ea7ab7d0001cdf5d5"], ["borrower_id", "597ee307a7ab7d0001cdf581"], ["created_at", 2017-09-04 11:01:07 UTC], ["updated_at", 2017-09-04 11:01:07 UTC], ["item_id", 2]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/logs/3
+Completed 302 Found in 15ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/logs/3" for 192.168.10.1 at 2017-09-04 11:01:07 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  Rendered logs/show.html.erb within layouts/application (18.3ms)
+Completed 500 Internal Server Error in 100ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    18:           <tr>
+    19:            <td><%= @log.id %></td>
+    20:            <td><%= current_user.name %></td>
+    21:            <td><%= @log.borrower.name %></td>
+    22:            <td><%= @log.item.description %></td>
+    23:            <td><%= @log.created_at %></td>
+    24:            <td><%= @log.returned_to.try(:name) %></td>
+  
+app/views/logs/show.html.erb:21:in `_app_views_logs_show_html_erb___3742132777088642990_70284797376600'
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.6ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.2ms)
+Started GET "/logs/3" for 192.168.10.1 at 2017-09-04 11:16:29 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  Rendered logs/show.html.erb within layouts/application (18.2ms)
+Completed 500 Internal Server Error in 93ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `borrower_id' for nil:NilClass):
+    18:           <tr>
+    19:            <td><%= @log.id %></td>
+    20:            <td><%= current_user.name %></td>
+    21:            <td><%= @log.borrower.borrower_id %></td>
+    22:            <td><%= @log.item.description %></td>
+    23:            <td><%= @log.created_at %></td>
+    24:            <td><%= @log.returned_to.try(:name) %></td>
+  
+app/views/logs/show.html.erb:21:in `_app_views_logs_show_html_erb___3742132777088642990_70284777323500'
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.8ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.9ms)
+Started GET "/logs/3" for 192.168.10.1 at 2017-09-04 11:16:39 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mLog Load (0.7ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  Rendered logs/show.html.erb within layouts/application (32.8ms)
+Completed 500 Internal Server Error in 123ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    18:           <tr>
+    19:            <td><%= @log.id %></td>
+    20:            <td><%= current_user.name %></td>
+    21:            <td><%= @log.borrower.id %></td>
+    22:            <td><%= @log.item.description %></td>
+    23:            <td><%= @log.created_at %></td>
+    24:            <td><%= @log.returned_to.try(:name) %></td>
+  
+app/views/logs/show.html.erb:21:in `_app_views_logs_show_html_erb___3742132777088642990_70284859755660'
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.3ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.9ms)
+Started GET "/logs/3" for 192.168.10.1 at 2017-09-04 11:16:44 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mLog Load (0.7ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  [1m[36mItem Load (1.5ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered logs/show.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 297ms (Views: 272.1ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/logs/3" for 192.168.10.1 at 2017-09-04 11:29:03 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  Rendered logs/show.html.erb within layouts/application (18.6ms)
+Completed 500 Internal Server Error in 94ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    17:         <tbody>
+    18:           <tr>
+    19:            <td><%= @log.id %></td>
+    20:            <td><%= @log.lender.name %></td>
+    21:            <td><%= @log.borrower.name %></td>
+    22:            <td><%= @log.item.description %></td>
+    23:            <td><%= @log.created_at %></td>
+  
+app/views/logs/show.html.erb:20:in `_app_views_logs_show_html_erb___3742132777088642990_70284892462380'
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (12.5ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (38.9ms)
+Started GET "/logs/3" for 192.168.10.1 at 2017-09-04 11:29:22 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mLog Load (1.2ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  Rendered logs/show.html.erb within layouts/application (26.8ms)
+Completed 500 Internal Server Error in 133ms (ActiveRecord: 1.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    18:           <tr>
+    19:            <td><%= @log.id %></td>
+    20:            <td><%= current_user.name %></td>
+    21:            <td><%= @log.borrower.name %></td>
+    22:            <td><%= @log.item.description %></td>
+    23:            <td><%= @log.created_at %></td>
+    24:            <td><%= @log.returned_to.try(:name) %></td>
+  
+app/views/logs/show.html.erb:21:in `_app_views_logs_show_html_erb___3742132777088642990_70284895609940'
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.6ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.7ms)
+Started GET "/logs/3" for 192.168.10.1 at 2017-09-04 11:29:29 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mLog Load (1.4ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  Rendered logs/show.html.erb within layouts/application (37.8ms)
+Completed 500 Internal Server Error in 132ms (ActiveRecord: 1.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    18:           <tr>
+    19:            <td><%= @log.id %></td>
+    20:            <td><%= current_user.name %></td>
+    21:            <td><%= @log.borrower.id %></td>
+    22:            <td><%= @log.item.description %></td>
+    23:            <td><%= @log.created_at %></td>
+    24:            <td><%= @log.returned_to.try(:name) %></td>
+  
+app/views/logs/show.html.erb:21:in `_app_views_logs_show_html_erb___3742132777088642990_70284895052120'
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.7ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (32.4ms)
+Started GET "/logs/3" for 192.168.10.1 at 2017-09-04 11:30:02 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  Rendered logs/show.html.erb within layouts/application (30.3ms)
+Completed 500 Internal Server Error in 126ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    18:           <tr>
+    19:            <td><%= @log.id %></td>
+    20:            <td><%= current_user.name %></td>
+    21:            <td><%= @log.borrower.id %></td>
+    22:            <td><%= @log.item.description %></td>
+    23:            <td><%= @log.created_at %></td>
+    24:            <td><%= @log.returned_to.try(:name) %></td>
+  
+app/views/logs/show.html.erb:21:in `_app_views_logs_show_html_erb___3742132777088642990_70284892884680'
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.7ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/ubuntu/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (35.6ms)
+Started GET "/logs/3" for 192.168.10.1 at 2017-09-04 11:30:15 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mLog Load (1.1ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered logs/show.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 376ms (Views: 349.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/logs" for 192.168.10.1 at 2017-09-04 11:30:21 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#index as HTML
+  [1m[36mLog Load (1.1ms)[0m  [1m[34mSELECT "logs".* FROM "logs"[0m
+  Rendering logs/index.html.erb within layouts/application
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered logs/index.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 674ms (Views: 222.2ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/items" for 192.168.10.1 at 2017-09-04 11:30:27 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (1.2ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.1ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 246ms (Views: 204.1ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/logs" for 192.168.10.1 at 2017-09-04 11:30:32 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#index as HTML
+  [1m[36mLog Load (1.3ms)[0m  [1m[34mSELECT "logs".* FROM "logs"[0m
+  Rendering logs/index.html.erb within layouts/application
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered logs/index.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 652ms (Views: 218.9ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 11:30:34 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#new as HTML
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 336ms (Views: 224.4ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/" for 192.168.10.1 at 2017-09-04 11:31:59 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (3.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.1ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 315ms (Views: 259.5ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/items" for 192.168.10.1 at 2017-09-04 11:32:00 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 301ms (Views: 251.7ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/items/new" for 192.168.10.1 at 2017-09-04 11:32:01 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#new as HTML
+  Rendering items/new.html.erb within layouts/application
+  Rendered items/_form.html.erb (2.6ms)
+  Rendered items/new.html.erb within layouts/application (23.2ms)
+Completed 200 OK in 356ms (Views: 327.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/items" for 192.168.10.1 at 2017-09-04 11:32:05 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"J3w3NcSlK8IobtH0VkQzdtsng/ZuwwPiVfHybaXdCW4EmFQhBO7MId/3QxgcWwALwOnn0T5SZOthHyo0mp+wlQ==", "item"=>{"description"=>"Kane laptop", "serial"=>""}, "commit"=>"Save Item"}
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "items" ("description", "created_at", "updated_at", "serial") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Kane laptop"], ["created_at", 2017-09-04 11:32:05 UTC], ["updated_at", 2017-09-04 11:32:05 UTC], ["serial", ""]]
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/items/3
+Completed 302 Found in 14ms (ActiveRecord: 5.5ms)
+
+
+Started GET "/items/3" for 192.168.10.1 at 2017-09-04 11:32:05 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 263ms (Views: 233.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/items/" for 192.168.10.1 at 2017-09-04 11:32:08 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.1ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 303ms (Views: 261.0ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 11:33:24 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#new as HTML
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 11:33:24 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#new as HTML
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (19.8ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mLog Load (3.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (2.8ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mLog Load (3.1ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (3.2ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (2.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (58.8ms)
+  [1m[36mLog Load (4.5ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (1.3ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (50.6ms)
+Completed 200 OK in 914ms (Views: 600.2ms | ActiveRecord: 29.6ms)
+
+
+Completed 200 OK in 720ms (Views: 534.4ms | ActiveRecord: 11.7ms)
+
+
+Started POST "/logs" for 192.168.10.1 at 2017-09-04 12:31:57 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#create as HTML
+  Parameters: {"log"=>{"item_id"=>"3", "borrower_id"=>"597ee330a7ab7d0001cdf582"}, "start_date"=>{"year"=>"2017", "month"=>"9", "day"=>"5"}, "authenticity_token"=>"nkOUbFiHBACCYcHlyAwEXf1WIPYMtORbyZi844OoLMUz6xCTcfVLl6iF7dkfupeGd5WlcBglEWxSjeTh7+50Tg=="}
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "logs" ("lender_id", "borrower_id", "created_at", "updated_at", "item_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["lender_id", "599aab6ea7ab7d0001cdf5d5"], ["borrower_id", "597ee330a7ab7d0001cdf582"], ["created_at", 2017-09-04 12:31:57 UTC], ["updated_at", 2017-09-04 12:31:57 UTC], ["item_id", 3]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/logs/4
+Completed 302 Found in 14ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/logs/4" for 192.168.10.1 at 2017-09-04 12:31:57 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered logs/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 330ms (Views: 300.6ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/items" for 192.168.10.1 at 2017-09-04 12:32:16 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (3.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (2.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (1.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 316ms (Views: 261.3ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 12:32:43 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#new as HTML
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (1.3ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 600ms (Views: 219.2ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/items" for 192.168.10.1 at 2017-09-04 12:32:44 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (1.3ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (2.2ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (1.3ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 342ms (Views: 290.5ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/logs/2/checkin" for 192.168.10.1 at 2017-09-04 12:32:46 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#checkin as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "logs" SET "returned_to_id" = $1, "return_date" = $2, "updated_at" = $3 WHERE "logs"."id" = $4[0m  [["returned_to_id", "599aab6ea7ab7d0001cdf5d5"], ["return_date", Mon, 04 Sep 2017], ["updated_at", 2017-09-04 12:32:46 UTC], ["id", 2]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/logs
+Completed 302 Found in 17ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/logs" for 192.168.10.1 at 2017-09-04 12:32:46 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#index as HTML
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT "logs".* FROM "logs"[0m
+  Rendering logs/index.html.erb within layouts/application
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered logs/index.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 2368ms (Views: 278.4ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/logs/2/checkin" for 192.168.10.1 at 2017-09-04 12:32:50 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#checkin as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/logs
+Completed 302 Found in 13ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/logs" for 192.168.10.1 at 2017-09-04 12:32:50 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#index as HTML
+  [1m[36mLog Load (1.2ms)[0m  [1m[34mSELECT "logs".* FROM "logs"[0m
+  Rendering logs/index.html.erb within layouts/application
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered logs/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 1516ms (Views: 361.7ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 12:33:05 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#new as HTML
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (1.5ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 403ms (Views: 236.8ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/items" for 192.168.10.1 at 2017-09-04 12:33:09 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (1.4ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (2.2ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 272ms (Views: 230.8ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/logs" for 192.168.10.1 at 2017-09-04 12:33:13 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#index as HTML
+  [1m[36mLog Load (1.2ms)[0m  [1m[34mSELECT "logs".* FROM "logs"[0m
+  Rendering logs/index.html.erb within layouts/application
+  [1m[36mItem Load (1.7ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered logs/index.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 1185ms (Views: 368.6ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/items" for 192.168.10.1 at 2017-09-04 12:33:15 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (1.5ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 295ms (Views: 254.1ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/items" for 192.168.10.1 at 2017-09-04 12:33:18 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (2.3ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (2.4ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.1ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 267ms (Views: 219.2ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/logs" for 192.168.10.1 at 2017-09-04 12:33:19 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#index as HTML
+  [1m[36mLog Load (1.9ms)[0m  [1m[34mSELECT "logs".* FROM "logs"[0m
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 12:33:20 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#new as HTML
+  Rendering logs/index.html.erb within layouts/application
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (1.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mItem Load (2.3ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered logs/index.html.erb within layouts/application (72.8ms)
+  [1m[36mLog Load (2.2ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (32.5ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (9.7ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (84.8ms)
+Completed 200 OK in 1298ms (Views: 530.9ms | ActiveRecord: 7.0ms)
+
+
+Completed 200 OK in 621ms (Views: 432.1ms | ActiveRecord: 45.6ms)
+
+
+Started POST "/logs" for 192.168.10.1 at 2017-09-04 12:33:27 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#create as HTML
+  Parameters: {"log"=>{"item_id"=>"1", "borrower_id"=>"597ee307a7ab7d0001cdf581"}, "start_date"=>{"year"=>"2017", "month"=>"9", "day"=>"5"}, "authenticity_token"=>"hr0wwAYfKM0EWtpq5nNfaiVPNRAAsmsLHjj1lMiSMXQrFbQ/L21nWi6+9lYxxcyxr4ywlhQjnjyFLa2WpNRp/w=="}
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "logs" ("lender_id", "borrower_id", "created_at", "updated_at", "item_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["lender_id", "599aab6ea7ab7d0001cdf5d5"], ["borrower_id", "597ee307a7ab7d0001cdf581"], ["created_at", 2017-09-04 12:33:27 UTC], ["updated_at", 2017-09-04 12:33:27 UTC], ["item_id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/logs/5
+Completed 302 Found in 14ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/logs/5" for 192.168.10.1 at 2017-09-04 12:33:27 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered logs/show.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 268ms (Views: 232.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/logs" for 192.168.10.1 at 2017-09-04 12:35:07 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#index as HTML
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT "logs".* FROM "logs"[0m
+  Rendering logs/index.html.erb within layouts/application
+  [1m[36mItem Load (1.5ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered logs/index.html.erb within layouts/application (15.7ms)
+Completed 200 OK in 2241ms (Views: 304.4ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 12:35:12 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#new as HTML
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (1.3ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 517ms (Views: 223.6ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/items" for 192.168.10.1 at 2017-09-04 12:35:16 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (1.3ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.2ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 282ms (Views: 230.7ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/logs/5/checkin" for 192.168.10.1 at 2017-09-04 12:35:19 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#checkin as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[33mUPDATE "logs" SET "returned_to_id" = $1, "return_date" = $2, "updated_at" = $3 WHERE "logs"."id" = $4[0m  [["returned_to_id", "599aab6ea7ab7d0001cdf5d5"], ["return_date", Mon, 04 Sep 2017], ["updated_at", 2017-09-04 12:35:19 UTC], ["id", 5]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/logs
+Completed 302 Found in 24ms (ActiveRecord: 4.7ms)
+
+
+Started GET "/logs" for 192.168.10.1 at 2017-09-04 12:35:19 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#index as HTML
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT "logs".* FROM "logs"[0m
+  Rendering logs/index.html.erb within layouts/application
+  [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered logs/index.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 2701ms (Views: 238.5ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 12:35:24 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#new as HTML
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mLog Load (1.2ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 577ms (Views: 283.4ms | ActiveRecord: 4.2ms)
+
+
+Started POST "/logs" for 192.168.10.1 at 2017-09-04 12:35:32 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#create as HTML
+  Parameters: {"log"=>{"item_id"=>"1", "borrower_id"=>"597f2819a7ab7d0001cdf58c"}, "start_date"=>{"year"=>"2017", "month"=>"9", "day"=>"6"}, "authenticity_token"=>"ydxlHlt3/airnD9CJ/WALklW9vMINeIqMRa4Kf1zc89kdOHhcgWyP4F4E37wQxP1w5VzdRykFx2qA+ArkTUrRA=="}
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "logs" ("lender_id", "borrower_id", "created_at", "updated_at", "item_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["lender_id", "599aab6ea7ab7d0001cdf5d5"], ["borrower_id", "597f2819a7ab7d0001cdf58c"], ["created_at", 2017-09-04 12:35:32 UTC], ["updated_at", 2017-09-04 12:35:32 UTC], ["item_id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/logs/6
+Completed 302 Found in 13ms (ActiveRecord: 4.9ms)
+
+
+Started GET "/logs/6" for 192.168.10.1 at 2017-09-04 12:35:32 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered logs/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 206ms (Views: 182.3ms | ActiveRecord: 1.6ms)
+
+
+  [1m[36mLog Load (1.1ms)[0m  [1m[34mSELECT "logs".* FROM "logs"[0m
