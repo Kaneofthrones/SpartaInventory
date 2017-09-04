@@ -24,9 +24,13 @@
               </select>
             </div>
 
+            <!-- <div class="form-group">
+              <label for="due_date">Due Date</label>
+
+              <input type="date" name="log[due_date]" >
+            </div> -->
             <div class="form-group">
-              <label for="return_date">Due Date</label>
-              <%= select_date Date.today, prefix: :start_date, name: "log[return_date]" %>
+              <input id="due_date" name="log[due_date]" type="date" />
             </div>
 
             <div class="form-group">

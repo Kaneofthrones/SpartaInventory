@@ -21,7 +21,7 @@
            <td><%= @log.borrower_id %></td>
            <td><%= @log.item.description %></td>
            <td><%= @log.created_at %></td>
-           <td><%= @log.returned_to.try(:name) %></td>
+           <td><%= @log.due_date%></td>
            <td><%= @log.return_date %></td>
           </tr>
         </tbody>

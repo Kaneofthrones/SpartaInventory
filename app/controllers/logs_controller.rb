@@ -25,7 +25,7 @@ class LogsController < ApplicationController
     User.token = session[:token]
     @items = Item.all
     @borrowers = User.all
-    @log = Log.new
+    
   end
 
   # GET /logs/1/edit
@@ -43,9 +43,10 @@ class LogsController < ApplicationController
 
   # POST /logs
   # POST /logs.json
-  def create
+  def create      
     @log = Log.new(log_params)
-    puts log_params
+
+    
 
     # Current user checks out
     if current_user
@@ -108,6 +109,6 @@ class LogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def log_params
-      params.require(:log).permit(:item_id, :return_date, :borrower_id, :returned_to_id, :lender_id)
+      params.require(:log).permit(:item_id, :return_date, :borrower_id, :returned_to_id, :lender_id, :due_date)
     end
 end
