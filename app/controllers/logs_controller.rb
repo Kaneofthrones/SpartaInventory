@@ -45,6 +45,7 @@ class LogsController < ApplicationController
   # POST /logs.json
   def create
     @log = Log.new(log_params)
+    puts log_params
 
     # Current user checks out
     if current_user
