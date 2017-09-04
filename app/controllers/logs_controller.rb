@@ -21,7 +21,6 @@ class LogsController < ApplicationController
 
   # GET /logs/new
   def new
-
     User.token = session[:token]
     @items = Item.all
     @borrowers = User.all

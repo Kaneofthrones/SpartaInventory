@@ -22,6 +22,8 @@
                   <th>Description</th>
                   <th>Status</th>
                   <th>Actions</th>
+                  <th>Lender</th>
+                  <th>Borrower</th>
                 </tr>
              </thead>
             <% @items.each do |item| %>
@@ -35,6 +37,10 @@
                 <th class="available">Available</th>
               <% end %>
                 <th><%= link_to 'delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></th>
+                <% if item.current %>
+                  <th><%= User.find(item.current.lender_id).name %></th>
+                  <th><%= User.find(item.current.borrower_id).name %></th>
+                <% end %>
             </tr>
              <%end%>
           </table>

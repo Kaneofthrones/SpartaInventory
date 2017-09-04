@@ -16,13 +16,13 @@
 
         <tbody>
           <tr>
-           <td><%= @log.id %></td>
-           <td><%= current_user.name %></td>
-           <td><%= @log.borrower_id %></td>
-           <td><%= @log.item.description %></td>
-           <td><%= @log.created_at %></td>
-           <td><%= @log.due_date%></td>
-           <td><%= @log.return_date %></td>
+            <td><%= @log.id %></td>
+            <td><%= User.find(@log.lender_id).name %></td>
+            <td><%= User.find(@log.borrower_id).name %></td>
+            <td><%= @log.item.description %></td>
+            <td><%= @log.created_at %></td>
+            <td><%= @log.returned_to.try(:name) %></td>
+            <td><%= @log.return_date %></td>
           </tr>
         </tbody>
       </table>
