@@ -21,7 +21,6 @@ class LogsController < ApplicationController
 
   # GET /logs/new
   def new
-
     User.token = session[:token]
     @items = Item.all
     @borrowers = User.all
@@ -44,6 +43,7 @@ class LogsController < ApplicationController
   # POST /logs
   # POST /logs.json
   def create
+
     @log = Log.new(log_params)
 
     # Current user checks out
