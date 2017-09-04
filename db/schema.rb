@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904103148) do
+ActiveRecord::Schema.define(version: 20170904124809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20170904103148) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.text     "serial"
-    t.date     "due_date"
   end
 
   create_table "logs", force: :cascade do |t|
@@ -32,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170904103148) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "item_id"
+    t.date     "due_date"
     t.index ["item_id"], name: "index_logs_on_item_id", using: :btree
     t.index ["lender_id"], name: "index_logs_on_lender_id", using: :btree
   end
