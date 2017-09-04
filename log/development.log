@@ -15206,3 +15206,255 @@ Processing by ItemsController#index as HTML
 Completed 200 OK in 300ms (Views: 223.7ms | ActiveRecord: 8.4ms)
 
 
+Started GET "/" for 192.168.10.1 at 2017-09-04 15:20:30 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 4], ["LIMIT", 1]]
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 5], ["LIMIT", 1]]
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 6], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (7959.6ms)
+Completed 200 OK in 13307ms (Views: 13046.3ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/items" for 192.168.10.1 at 2017-09-04 15:20:55 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.3ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  [1m[36mLog Load (1.1ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 4], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 5], ["LIMIT", 1]]
+  [1m[36mLog Load (2.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 6], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 15:20:57 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  Rendered items/index.html.erb within layouts/application (3570.8ms)
+Completed 200 OK in 3837ms (Views: 3791.5ms | ActiveRecord: 9.0ms)
+
+
+Processing by LogsController#new as HTML
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mLog Load (1.6ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (1.1ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 4], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 5], ["LIMIT", 1]]
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 6], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (25.2ms)
+Completed 200 OK in 2908ms (Views: 247.0ms | ActiveRecord: 7.7ms)
+
+
+Started POST "/logs" for 192.168.10.1 at 2017-09-04 15:21:07 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#create as HTML
+  Parameters: {"log"=>{"item_id"=>"5", "borrower_id"=>"595a3e86a7ab7d0001cdf57e", "due_date"=>"2017-09-06"}, "authenticity_token"=>"Sz32OfYac9ufMe9ZHOJ5rW2UaQVzngSQHCqMJOqn6XXmlXLG32g8TLXVw2XLVOp251fsg2cP8aeHP9QmhuGx/g=="}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "logs" ("lender_id", "borrower_id", "created_at", "updated_at", "item_id", "due_date") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["lender_id", "599aab6ea7ab7d0001cdf5d5"], ["borrower_id", "595a3e86a7ab7d0001cdf57e"], ["created_at", 2017-09-04 15:21:07 UTC], ["updated_at", 2017-09-04 15:21:07 UTC], ["item_id", 5], ["due_date", Wed, 06 Sep 2017]]
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/logs/20
+Completed 302 Found in 46ms (ActiveRecord: 6.4ms)
+
+
+Started GET "/logs/20" for 192.168.10.1 at 2017-09-04 15:21:07 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mLog Load (0.7ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered logs/show.html.erb within layouts/application (2939.4ms)
+Completed 200 OK in 3196ms (Views: 3158.6ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 15:21:37 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LogsController#new as HTML
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (2.5ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 4], ["LIMIT", 1]]
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 5], ["LIMIT", 1]]
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 6], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (159.9ms)
+Completed 200 OK in 1738ms (Views: 1501.0ms | ActiveRecord: 17.5ms)
+
+
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 15:21:40 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#new as HTML
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mLog Load (1.2ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (1.2ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 4], ["LIMIT", 1]]
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 5], ["LIMIT", 1]]
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 6], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (25.9ms)
+Completed 200 OK in 581ms (Views: 349.4ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/items" for 192.168.10.1 at 2017-09-04 15:21:43 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  [1m[36mLog Load (2.6ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 4], ["LIMIT", 1]]
+  [1m[36mLog Load (1.1ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 5], ["LIMIT", 1]]
+  [1m[36mLog Load (1.1ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 6], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (13212.0ms)
+Started GET "/items" for 192.168.10.1 at 2017-09-04 15:21:57 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Completed 200 OK in 13591ms (Views: 13545.5ms | ActiveRecord: 8.6ms)
+
+
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.7ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (3.1ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (2.1ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (3.6ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  [1m[36mLog Load (2.0ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 4], ["LIMIT", 1]]
+  [1m[36mLog Load (1.5ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 5], ["LIMIT", 1]]
+  [1m[36mLog Load (1.4ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 6], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (21735.9ms)
+Completed 200 OK in 22057ms (Views: 21977.7ms | ActiveRecord: 15.4ms)
+
+
+Started GET "/logs/6/checkin" for 192.168.10.1 at 2017-09-04 15:22:26 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#checkin as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mLog Load (1.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[33mUPDATE "logs" SET "returned_to_id" = $1, "return_date" = $2, "updated_at" = $3 WHERE "logs"."id" = $4[0m  [["returned_to_id", "599aab6ea7ab7d0001cdf5d5"], ["return_date", Mon, 04 Sep 2017], ["updated_at", 2017-09-04 15:22:26 UTC], ["id", 6]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/logs
+Completed 302 Found in 52ms (ActiveRecord: 6.5ms)
+
+
+Started GET "/logs" for 192.168.10.1 at 2017-09-04 15:22:26 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#index as HTML
+  [1m[36mLog Load (1.1ms)[0m  [1m[34mSELECT "logs".* FROM "logs"[0m
+Started GET "/logs/14/checkin" for 192.168.10.1 at 2017-09-04 15:22:37 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#checkin as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "logs" SET "returned_to_id" = $1, "return_date" = $2, "updated_at" = $3 WHERE "logs"."id" = $4[0m  [["returned_to_id", "599aab6ea7ab7d0001cdf5d5"], ["return_date", Mon, 04 Sep 2017], ["updated_at", 2017-09-04 15:22:37 UTC], ["id", 14]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/logs
+Completed 302 Found in 15ms (ActiveRecord: 4.2ms)
+
+
+Started GET "/logs" for 192.168.10.1 at 2017-09-04 15:22:37 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#index as HTML
+  [1m[36mLog Load (1.3ms)[0m  [1m[34mSELECT "logs".* FROM "logs"[0m
+  Rendering logs/index.html.erb within layouts/application
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered logs/index.html.erb within layouts/application (53.1ms)
+Completed 200 OK in 36380ms (Views: 273.2ms | ActiveRecord: 7.8ms)
+
+
+  Rendering logs/index.html.erb within layouts/application
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered logs/index.html.erb within layouts/application (56.6ms)
+Completed 200 OK in 32501ms (Views: 309.2ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 15:23:24 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#new as HTML
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 3], ["LIMIT", 1]]
+  [1m[36mLog Load (1.1ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 4], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 5], ["LIMIT", 1]]
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 6], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 325ms (Views: 190.2ms | ActiveRecord: 6.4ms)
+
+
+Started POST "/logs" for 192.168.10.1 at 2017-09-04 15:23:33 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#create as HTML
+  Parameters: {"log"=>{"item_id"=>"1", "borrower_id"=>"597ee3cea7ab7d0001cdf588", "due_date"=>"2017-09-06"}, "authenticity_token"=>"haTyuiwJJv5aIok5vmNyfWD+QvjJs/OHtK6VEnXQVoEoDHZFBXtpaXDGpQVp1eGm6j3Hft0iBrAvu80QGZYOCg=="}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "logs" ("lender_id", "borrower_id", "created_at", "updated_at", "item_id", "due_date") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["lender_id", "599aab6ea7ab7d0001cdf5d5"], ["borrower_id", "597ee3cea7ab7d0001cdf588"], ["created_at", 2017-09-04 15:23:33 UTC], ["updated_at", 2017-09-04 15:23:33 UTC], ["item_id", 1], ["due_date", Wed, 06 Sep 2017]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/logs/21
+Completed 302 Found in 13ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/logs/21" for 192.168.10.1 at 2017-09-04 15:23:33 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"21"}
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered logs/show.html.erb within layouts/application (101.9ms)
+Completed 200 OK in 401ms (Views: 375.5ms | ActiveRecord: 1.6ms)
+
+
