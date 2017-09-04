@@ -24,7 +24,7 @@ class LogsController < ApplicationController
     User.token = session[:token]
     @items = Item.all
     @borrowers = User.all
-    
+    @log = Log.new
   end
 
   # GET /logs/1/edit
