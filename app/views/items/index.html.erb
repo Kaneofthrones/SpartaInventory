@@ -24,24 +24,30 @@
                   <th>Actions</th>
                   <th>Lender</th>
                   <th>Borrower</th>
+                  <th>Due Date</th>
                 </tr>
              </thead>
             <% @items.each do |item| %>
-            <tr>
-              <th><%= item.id %></th> 
-              <th><a href="<%= edit_item_path item %>"><%= item.description %></a></th>   
-              <% if item.current %>
-                <th class="checked-out">
-                  <%= link_to "Check-in", checkin_log_path(item.current), data: { confirm: 'Are you sure?' } %></th>
-              <% else %>
-                <th class="available">Available</th>
-              <% end %>
+              <tr>
+                <th><%= item.id %></th> 
+                <th><a href="<%= edit_item_path item %>"><%= item.description %></a></th>   
+                <% if item.current %>
+                  <th class="checked-out">
+                    <%= link_to "Check-in", checkin_log_path(item.current), data: { confirm: 'Are you sure?' } %></th>
+                <% else %>
+                  <th class="available">Available</th>
+                <% end %>
                 <th><%= link_to 'delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></th>
                 <% if item.current %>
                   <th><%= User.find(item.current.lender_id).name %></th>
                   <th><%= User.find(item.current.borrower_id).name %></th>
-                <% end %>
-            </tr>
+                  <% if (item.current.due_date < DateTime.now)%>
+                    <th style="color: red"><%= item.current.due_date %></th>
+                  <% else %>
+                    <th><%= item.current.due_date %></th>
+                    <% end %>
+                  <% end %>
+              </tr>
              <%end%>
           </table>
 
