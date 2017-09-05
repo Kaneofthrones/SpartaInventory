@@ -43,10 +43,7 @@ class LogsController < ApplicationController
   # POST /logs
   # POST /logs.json
   def create      
-    @log = Log.new(log_params)
-
-    
-
+    @log = Log.new(log_params) 
     # Current user checks out
     if current_user
       @log.lender_id = current_user.id
