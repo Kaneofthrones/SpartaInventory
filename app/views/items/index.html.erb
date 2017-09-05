@@ -19,11 +19,11 @@
               <tr>
                 <th>Item id</th>
                 <th>Description</th>
-                <th>Status</th>
-                <th>Actions</th>
                 <th>Lender</th>
                 <th>Borrower</th>
-                <th>Due Date</th>
+                <th>Due Date</th> 
+                <th>Status</th>
+                <th>Actions</th>
               </tr>
              </thead>
             <% @items.each do |item| %>
@@ -31,24 +31,33 @@
                 <th><%= item.id %></th> 
                 <th><a href="<%= edit_item_path item %>"><%= item.description %></a></th>   
                 <% if item.current %>
+                  <th><%= item.current.lender.name %></th>
+                  <th><%= item.current.borrower.name%></th>
+                  <!-- Check if due date is something empty -->
+                  <% if item.current.due_date %>
+                    <!-- if due date is before today's date-->
+                    <% if (item.current.due_date < DateTime.now)%>
+                      <!-- then make the due date field red-->
+                      <th style="color: red"><%= item.current.due_date %></th>
+                    <% else %>
+                      <!-- else just show the due date -->
+                      <th><%= item.current.due_date %></th>
+                    <% end %>
+                  <% else %>
+                    <th></th>
+                  <% end %> 
+                <% else %>
+                  <% 3.times do %>
+                    <th></th>
+                  <% end %>
+                <% end %>
+                <% if item.current %>
                   <th class="checked-out">
                     <%= link_to "Check-in", checkin_log_path(item.current), data: { confirm: 'Are you sure?' } %></th>
                 <% else %>
                   <th class="available">Available</th>
                 <% end %>
                 <th><%= link_to 'delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></th>
-                <% if item.current %>
-                  <th><%= item.current.lender.name %></th>
-                  <th><%= item.current.borrower.name%></th>
-                  <!-- if due date is before today's date-->
-                  <% if (item.current.due_date < DateTime.now)%>
-                    <!-- then make the due date field red-->
-                    <th style="color: red"><%= item.current.due_date %></th>
-                  <% else %>
-                    <!-- else just show the due date -->
-                    <th><%= item.current.due_date %></th>
-                  <% end %>
-                <% end %>
               </tr>
             <%end%>
           </table>
