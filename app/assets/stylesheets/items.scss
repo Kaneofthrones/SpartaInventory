@@ -1,13 +1,19 @@
 #items {
 
   .checked-out {
+
     a {
       color:red;
     }
+    
   }
 
   .available {
       color:green;
   }
 
+}
+
+#error_explanation {
+  color: red;
 }

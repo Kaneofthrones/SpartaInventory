@@ -17,11 +17,12 @@ class LogsController < ApplicationController
   # GET /logs/1
   # GET /logs/1.json
   def show
+    #populating the current log a user and lender
+    @log = populate_log @log
   end
 
   # GET /logs/new
   def new
-
     User.token = session[:token]
     @items = Item.all
     @borrowers = User.all
@@ -43,9 +44,8 @@ class LogsController < ApplicationController
 
   # POST /logs
   # POST /logs.json
-  def create
-    @log = Log.new(log_params)
-
+  def create      
+    @log = Log.new(log_params) 
     # Current user checks out
     if current_user
       @log.lender_id = current_user.id
@@ -94,7 +94,6 @@ class LogsController < ApplicationController
     end
 
     def populate_log log
-
       # populate the user info
       log.lender = User.find log.lender_id
       log.borrower = User.find log.borrower_id
@@ -107,6 +106,6 @@ class LogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def log_params
-      params.require(:log).permit(:item_id, :return_date, :borrower_id, :returned_to_id, :lender_id)
+      params.require(:log).permit(:item_id, :return_date, :borrower_id, :returned_to_id, :lender_id, :due_date)
     end
 end
