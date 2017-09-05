@@ -40,9 +40,12 @@
                 <% if item.current %>
                   <th><%= User.find(item.current.lender_id).name %></th>
                   <th><%= User.find(item.current.borrower_id).name %></th>
-                  <% if(item.current.due_date < DateTime.now) %>
+                  <!-- if due date is before today's date-->
+                  <% if (item.current.due_date < DateTime.now)%>
+                  <!-- then make the due date field red-->
                     <th style="color: red"><%= item.current.due_date %></th>
                   <% else %>
+                  <!-- else just show the due date -->
                   <th><%= item.current.due_date %></th>
                   <% end %>
                 <% end %>
