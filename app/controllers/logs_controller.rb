@@ -17,6 +17,8 @@ class LogsController < ApplicationController
   # GET /logs/1
   # GET /logs/1.json
   def show
+    #populating the current log a user and lender
+    @log = populate_log @log
   end
 
   # GET /logs/new
@@ -92,7 +94,6 @@ class LogsController < ApplicationController
     end
 
     def populate_log log
-
       # populate the user info
       log.lender = User.find log.lender_id
       log.borrower = User.find log.borrower_id
