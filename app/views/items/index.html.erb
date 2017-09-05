@@ -33,14 +33,19 @@
                 <% if item.current %>
                   <th><%= item.current.lender.name %></th>
                   <th><%= item.current.borrower.name%></th>
-                  <!-- if due date is before today's date-->
-                  <% if (item.current.due_date < DateTime.now)%>
-                    <!-- then make the due date field red-->
-                    <th style="color: red"><%= item.current.due_date %></th>
+                  <!-- Check if due date is something empty -->
+                  <% if item.current.due_date %>
+                    <!-- if due date is before today's date-->
+                    <% if (item.current.due_date < DateTime.now)%>
+                      <!-- then make the due date field red-->
+                      <th style="color: red"><%= item.current.due_date %></th>
+                    <% else %>
+                      <!-- else just show the due date -->
+                      <th><%= item.current.due_date %></th>
+                    <% end %>
                   <% else %>
-                    <!-- else just show the due date -->
-                    <th><%= item.current.due_date %></th>
-                  <% end %>
+                    <th></th>
+                  <% end %> 
                 <% else %>
                   <% 3.times do %>
                     <th></th>
