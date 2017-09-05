@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.order(:id)
-
     @out = @items.to_a.reduce(0) do |total , item|
 
       if item.current != nil then total += 1 end
@@ -14,6 +13,10 @@ class ItemsController < ApplicationController
     end
 
     @available = @items.length - @out 
+    #Populates item with user and lender if its lent out
+    @items = @items.map do |item|
+      populate_item item
+    end
   end
 
   # GET /items/1
@@ -73,10 +76,17 @@ class ItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
-      
-
       @item = Item.find(params[:id])
+    end
 
+    #populates item with lender and borrower if it has a current log
+    def populate_item item
+      # populate the user info
+      if item.current
+        item.current.lender = User.find item.current.lender_id
+        item.current.borrower = User.find item.current.borrower_id
+      end
+      return item
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

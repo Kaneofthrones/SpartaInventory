@@ -17,8 +17,8 @@
         <tbody>
           <tr>
             <td><%= @log.id %></td>
-            <td><%= User.find(@log.lender_id).name %></td>
-            <td><%= User.find(@log.borrower_id).name %></td>
+            <td><%= @log.lender.name %></td>
+            <td><%= @log.borrower.name %></td>
             <td><%= @log.item.description %></td>
             <td><%= @log.created_at %></td>
             <td><%= @log.due_date %></td>

@@ -1,31 +1,30 @@
 <div class="container-fluid" id="items">
   <div class="row">
-      <div class="col-xs-12">
-          <h1>Items</h1>
-
-          <div class="summary">
-            <div>
-              Total : <%= @items.length %>
-            </div>
-            <div>
-              Available : <%= @available %>
-            </div>
-            <div>
-              Out : <%= @out %>
-            </div>
+    <div class="col-xs-12">
+      <h1>Items</h1>
+        <div class="summary">
+          <div>
+            Total : <%= @items.length %>
           </div>
+          <div>
+            Available : <%= @available %>
+          </div>
+          <div>
+            Out : <%= @out %>
+          </div>
+        </div>
 
           <table class="table table-hover">
-             <thead>
-                <tr>
-                  <th>Item id</th>
-                  <th>Description</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                  <th>Lender</th>
-                  <th>Borrower</th>
-                  <th>Due Date</th>
-                </tr>
+            <thead>
+              <tr>
+                <th>Item id</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Actions</th>
+                <th>Lender</th>
+                <th>Borrower</th>
+                <th>Due Date</th>
+              </tr>
              </thead>
             <% @items.each do |item| %>
               <tr>
@@ -39,18 +38,20 @@
                 <% end %>
                 <th><%= link_to 'delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></th>
                 <% if item.current %>
-                  <th><%= User.find(item.current.lender_id).name %></th>
-                  <th><%= User.find(item.current.borrower_id).name %></th>
+                  <th><%= item.current.lender.name %></th>
+                  <th><%= item.current.borrower.name%></th>
+                  <!-- if due date is before today's date-->
                   <% if (item.current.due_date < DateTime.now)%>
+                    <!-- then make the due date field red-->
                     <th style="color: red"><%= item.current.due_date %></th>
                   <% else %>
+                    <!-- else just show the due date -->
                     <th><%= item.current.due_date %></th>
-                    <% end %>
                   <% end %>
+                <% end %>
               </tr>
-             <%end%>
+            <%end%>
           </table>
-
           <a class="btn btn-success largeBtn" href="/items/new" role="button">Add new Item </a>
     </div>
   </div>
