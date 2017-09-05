@@ -44,6 +44,7 @@
                   <% if (item.current.due_date < DateTime.now)%>
                     <!-- then make the due date field red-->
                     <th style="color: red"><%= item.current.due_date %></th>
+                    <%= SLACK_NOTIFIER.ping("\n OVER DUE ALERT\nLender: " + item.current.lender.name + "\n Borrower: " + item.current.borrower.name + "\n Item: "+ item.description + "\n Due Date: " + item.current.due_date.to_s)%>
                   <% else %>
                     <!-- else just show the due date -->
                     <th><%= item.current.due_date %></th>
