@@ -23,8 +23,10 @@
                 <%end%>
               </select>
             </div>
+
             <div class="form-group">
-              <input id="due_date" name="log[due_date]" type="date" />
+              <!-- using rails date field select tag for the due date column in the logs table, setting the value to the current date-->
+              <%= date_field("log","due_date", min: Date.today, value: Date.today)%>
             </div>
 
             <div class="form-group">
