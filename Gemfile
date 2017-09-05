@@ -24,6 +24,7 @@ gem 'devise'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'httparty', '~> 0.13.7'
 gem 'slack-notifier'
+gem 'whenever', :require => false
 
 
 

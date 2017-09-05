@@ -45,7 +45,6 @@ class LogsController < ApplicationController
   def create      
     @log = Log.new(log_params)
 
-    
 
     # Current user checks out
     if current_user
