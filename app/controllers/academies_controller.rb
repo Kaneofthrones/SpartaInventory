@@ -4,7 +4,7 @@ class AcademiesController < ApplicationController
   # GET /academies
   # GET /academies.json
   def index
-    @academies = Academy.all
+    @a = Academy.all
   end
 
   # GET /academies/1
@@ -15,10 +15,12 @@ class AcademiesController < ApplicationController
   # GET /academies/new
   def new
     @academy = Academy.new
+    @academies = Academy.all
   end
 
   # GET /academies/1/edit
   def edit
+    @academies = Academy.all
   end
 
   # POST /academies
@@ -69,6 +71,6 @@ class AcademiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def academy_params
-      params.require(:academy).permit(:name, :academy_id)
+      params.require(:academy).permit(:name)
     end
 end

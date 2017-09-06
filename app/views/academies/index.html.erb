@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Academies</h1>
+        <td><%= @a %></td>
+
 
 <table>
   <thead>
@@ -15,13 +17,13 @@
     <% @academies.each do |academy| %>
       <tr>
         <td><%= academy.name %></td>
-        <td><%= academy.academy_id %></td>
         <td><%= link_to 'Show', academy %></td>
         <td><%= link_to 'Edit', edit_academy_path(academy) %></td>
         <td><%= link_to 'Destroy', academy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
+
 </table>
 
 <br>
