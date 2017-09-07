@@ -17,11 +17,4 @@
 //= require turbolinks
 //= require_tree .
 	
-$(function() {  
-  // commands go here 
-  $overdue = $("#overdue").html()
-  console.log($overdue)
-  console.log(gon.current)
-
-});
 
