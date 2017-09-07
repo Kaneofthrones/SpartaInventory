@@ -1,24 +1,9 @@
 class AcademiesController < ApplicationController
   before_action :set_academy, only: [:show, :edit, :update, :destroy]
 
-  # GET /academies
-  # GET /academies.json
-  def index
-    @academies = Academy.all
-  end
-
-  # GET /academies/1
-  # GET /academies/1.json
-  def show
-  end
-
   # GET /academies/new
   def new
     @academy = Academy.new
-  end
-
-  # GET /academies/1/edit
-  def edit
   end
 
   # POST /academies
