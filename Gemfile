@@ -5,8 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
-
 ############## Gem for bootstrap 3 ###############
 gem 'bootstrap-sass', '~> 3.3.6'
 
@@ -24,10 +22,6 @@ gem 'devise'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'httparty', '~> 0.13.7'
 gem "slack-notifier"
-gem 'whenever', :require => false
-
-
-
 
 #############################
 
@@ -45,8 +39,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-gem 'gon'
-
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -60,7 +52,6 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'rufus-scheduler'
-gem 'crono'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
