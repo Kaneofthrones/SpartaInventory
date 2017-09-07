@@ -2,9 +2,10 @@ require 'rufus-scheduler'
 # Let's use the rufus-scheduler singleton
 s = Rufus::Scheduler.singleton
 # Slack notifications linked to webhook that is directed to the channel random with the name overdue notifier
-SLACK_NOTIFIER1 = Slack::Notifier.new(ENV["webhook"], username: "OVERDUE NOTIFIER")
+SLACK_NOTIFIER1 = Slack::Notifier.new(
+	ENV["webhook"], username: "OVERDUE NOTIFIER")
 # Every interval run through all the items and compare due dates of current logs to the current date. 
-s.cron '00 15 * * *'  do
+s.every '24h'  do
 	items = Item.all
 	items.each do |item|
 		if item.current
