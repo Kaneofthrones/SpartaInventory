@@ -29,22 +29,19 @@
            </thead>
 
             <% @items.each do |item| %>
-              <tr>
-                <th><%= item.id %></th> 
-                <th><a href="<%= edit_item_path item %>"><%= item.description %></a></th>   
-                <% if item.current %>
-                  <th id="lender"><%= item.current.lender.name %></th>
-                  <th><%= item.current.borrower.name%></th>
-                  <!-- Check if due date is something empty -->
-                  <% if item.current.due_date %>
-                    <!-- if due date is before today's date-->
-                    <% if (item.current.due_date < @date)%>
-                      <!-- then make the due date field red-->
-                      <th style="color: red" id="overdue"><%= item.current.due_date %></th>
-                    <% else %>
-                      <!-- else just show the due date -->
-                      <th><%= item.current.due_date %></th>
-                    <% end %>
+
+            <tr>
+              <th><%= item.id %></th> 
+              <th><a href="<%= edit_item_path item %>"><%= item.description %></a></th>   
+              <% if item.current %>
+                <th><%= item.current.lender.name %></th>
+                <th><%= item.current.borrower.name%></th>
+                <!-- Check if due date is something empty -->
+                <% if item.current.due_date %>
+                  <!-- if due date is before today's date-->
+                  <% if (item.current.due_date < @date)%>
+                    <!-- then make the due date field red-->
+                    <th style="color: red"><%= item.current.due_date %></th>
                   <% else %>
                     <!-- else just show the due date -->
                     <th><%= item.current.due_date %></th>
@@ -57,6 +54,7 @@
                   <th></th>
                 <% end %>
               <% end %>
+              <!-- delete and availiability of item -->
               <% if item.current %>
                 <th class="checked-out">
                   <%= link_to "Check-in", checkin_log_path(item.current), data: { confirm: 'Are you sure?' } %>
