@@ -5,8 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
-
 ############## Gem for bootstrap 3 ###############
 gem 'bootstrap-sass', '~> 3.3.6'
 
@@ -23,8 +21,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'httparty', '~> 0.13.7'
-
-
+gem "slack-notifier"
 
 #############################
 
@@ -45,6 +42,7 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -53,6 +51,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'rufus-scheduler'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
