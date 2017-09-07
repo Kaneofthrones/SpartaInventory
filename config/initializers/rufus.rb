@@ -5,7 +5,7 @@ s = Rufus::Scheduler.singleton
 SLACK_NOTIFIER1 = Slack::Notifier.new(
 	"https://hooks.slack.com/services/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", channel: "#random", username: "OVERDUE NOTIFIER")
 # Every interval run through all the items and compare due dates of current logs to the current date. 
-s.every '10s' do
+s.every '24h' do
 	items = Item.all
 	items.each do |item|
 		if item.current
