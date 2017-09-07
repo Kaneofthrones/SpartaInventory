@@ -4,9 +4,10 @@ class ItemsController < ApplicationController
 
   # GET /items
   # GET /items.json
+
   def index
     @items = Item.order(:id)
-    @date = DateTime.now
+    @date = DateTime.current
     @out = @items.to_a.reduce(0) do |total , item|
 
     if item.current != nil then total += 1 end
