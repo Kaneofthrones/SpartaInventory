@@ -14,5 +14,9 @@ module LogProj
           resource '*', :headers => :any, :methods => [:get, :post, :put, :patch, :options]
         end
     end
+    config.time_zone = 'London'
+	config.active_record.default_timezone = :local
   end
 end
+
+

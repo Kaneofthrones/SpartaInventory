@@ -5,11 +5,11 @@ s = Rufus::Scheduler.singleton
 SLACK_NOTIFIER1 = Slack::Notifier.new(
 	"https://hooks.slack.com/services/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", channel: "#random", username: "OVERDUE NOTIFIER")
 # Every interval run through all the items and compare due dates of current logs to the current date. 
-s.every '24h' do
+s.cron '31 13 * * *'  do
 	items = Item.all
 	items.each do |item|
 		if item.current
-			if item.current.due_date < DateTime.now
+			if item.current.due_date < DateTime.now.in_time_zone("London")
 				SLACK_NOTIFIER1.ping("----------------------------\n OVER DUE ALERT\nLender: "  + User.find(item.current.lender_id).name + "\n Borrower:"  + User.find(item.current.borrower_id).name + "\n Item: " + item.description + "\n Due Date:"  + item.current.due_date.to_s)
 			end
 		end
