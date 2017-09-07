@@ -1,12 +1,7 @@
 <div class="container-fluid" id="items">
   <div class="row">
     <div class="col-xs-12">
-      <div class="form-group">
-        <% @a.each do |academy| %>  
-          <%= radio_button_tag(:academy, "item") %>
-          <%= label_tag(:academy_id, academy.name) %>
-        <% end %>
-      </div>
+    
       <h1>Items</h1>
         <div class="summary">
           <div>
@@ -33,7 +28,8 @@
             </tr>
            </thead>
 
-          <% @items.each do |item| %>
+            <% @items.each do |item| %>
+
             <tr>
               <th><%= item.id %></th> 
               <th><a href="<%= edit_item_path item %>"><%= item.description %></a></th>   
@@ -49,6 +45,7 @@
                   <% else %>
                     <!-- else just show the due date -->
                     <th><%= item.current.due_date %></th>
+
                   <% end %>
                 <% else %>
                   <th></th>
@@ -66,6 +63,7 @@
                 <th class="available">Available</th>
               <% end %>
               <th><%= link_to 'delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></th>
+              <th class="academy"><%= item.academy.name%></th>
             </tr>
           <%end%>
         </table>

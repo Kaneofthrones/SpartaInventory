@@ -4,7 +4,7 @@ class AcademiesController < ApplicationController
   # GET /academies
   # GET /academies.json
   def index
-    @a = Academy.all
+    @academies = Academy.all
   end
 
   # GET /academies/1
@@ -15,12 +15,10 @@ class AcademiesController < ApplicationController
   # GET /academies/new
   def new
     @academy = Academy.new
-    @academies = Academy.all
   end
 
   # GET /academies/1/edit
   def edit
-    @academies = Academy.all
   end
 
   # POST /academies

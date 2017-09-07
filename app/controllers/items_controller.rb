@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
     @items = Item.order(:id)
     @date = DateTime.now
     @a = Academy.all
+    @academy = params[:academy]
     
     @out = @items.to_a.reduce(0) do |total , item|
 
