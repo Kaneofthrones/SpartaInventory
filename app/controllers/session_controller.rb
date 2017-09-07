@@ -32,5 +32,4 @@ class SessionController < ApplicationController
     end
   end
 
-  
 end
