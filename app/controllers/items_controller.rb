@@ -29,10 +29,12 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new 
+    @academies = Academy.all
   end
 
   # GET /items/1/edit
   def edit
+    @academies = Academy.all
   end
 
   # POST /items
