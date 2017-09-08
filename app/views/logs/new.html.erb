@@ -26,6 +26,7 @@
 
             <div class="form-group">
               <!-- using rails date field select tag for the due date column in the logs table, setting the value to the current date-->
+              <label for="due_date">Due Date </label>
               <%= date_field("log","due_date", min: Date.today, value: Date.today)%>
             </div>
 
@@ -39,13 +40,3 @@
     </div>
   </div>
 </div>
-
-
-
-   
-
-
-
-
-
-
