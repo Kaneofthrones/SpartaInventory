@@ -20,7 +20,7 @@ gem 'bootstrap-sass', '~> 3.4.1'
 # https://github.com/plataformatec/devise
 gem 'devise'
 gem 'rack-cors', :require => 'rack/cors'
-gem 'httparty', '~> 0.13.7'
+gem 'httparty', '~> 0.21.0'
 gem "slack-notifier"
 
 #############################
